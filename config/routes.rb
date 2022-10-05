@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
- 
 #顧客用
  devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -26,6 +25,18 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :orders, only:[:new, :create, :index, :show]
     post '/orders/confirmation'=>'orders#confirmation'
     get '/orders/completion'=>'orders#completion'
+    resources :addresses,only:[:index,:edit,:update,:create,:destroy]
   end
 
+
+
+  namespace :admin do
+    root :to =>'homes#top'
+    resources :items,only:[:index,:new,:show,:create,:edit,:up]
+    resources :genres,only:[:index,:create,:edit,:update]
+    resources :customers,only:[:index,:show,:edit,:update]
+    resources :orders,only:[:show,:update] do
+    resources :order_products,only:[:update]
+  end
+  end
 end
