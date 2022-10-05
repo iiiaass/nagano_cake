@@ -14,7 +14,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
  scope module: :public do
-    root :to =>'homes#top'
+    root to: 'homes#top'
     get '/about'=>'homes#about'
     resources :items, only:[:index, :show]
     resources :customers,only:[:show,:edit,:update]
@@ -31,7 +31,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 
   namespace :admin do
-    root :to =>'homes#top'
+    root to: 'homes#top'
     resources :items,only:[:index,:new,:show,:create,:edit,:up]
     resources :genres,only:[:index,:create,:edit,:update]
     resources :customers,only:[:index,:show,:edit,:update]
