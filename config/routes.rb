@@ -17,7 +17,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     root to: 'homes#top'
     get '/about'=>'homes#about'
     resources :items, only:[:index, :show]
-    resources :customers,only:[:show,:edit,:update]
+    get '/customers/information'=>'customers#show', as: 'show'
+    get '/customers/information/edit'=>'customers#edit', as: 'edit'
+    patch '/customers/information'=>'customers#update', as: 'update'
     get '/customers/unsubscribe'=>'customers#unsubscribe'
     patch '/customers/withdraw'=>'customers#withdraw'
     resources :cart_items, only:[:index, :update, :destroy, :create]
