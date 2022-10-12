@@ -5,10 +5,9 @@ class Public::CartItemsController < ApplicationController
     @total=0
     @cart_items.each do |cart|
     @total = @total + cart.sum_of_price
-
     end
-
   end
+  
   def create
     @cart_item=CartItem.new(cart_item_params)
     @cart_item.customer_id=current_customer.id
