@@ -1,3 +1,28 @@
 <%=render 'public/header' %>
-<h1>Public::Orders#confirmation</h1>
-<p>Find me in app/views/public/orders/confirmation.html.erb</p>
+<div>
+  <% @cart_items.each do |cart_item| %>
+  <%=image_tag cart_item.item.get_image(100,100) %>
+  <p>商品名:<%=cart_item.item.name %></p>
+  <p>単価:<%=cart_item.item.add_tax_price.to_s(:dalimited) %></p>
+  <p>数量:<%=cart_item.amount %></p>
+  <p>小計:<%=cart_item.sum_of_price %></p>
+  <% end %>
+  <p>合計金額：<%= @total.round.to_s(:delimited)%></p>
+  <p>請求金額<%=@total+@order.postage%></p>
+  <p>送料:<%=@order.postage %></p>
+  <p>支払い方法</p>
+  <%=@order.payment_method %>
+  <p>お届け先</p>
+  <%=@order.postal_code %>
+  <%=@order.address %>
+  <%=@order.name %>
+  <%=form_with model: @order,url: orders_path do |f| %>
+  <%= f.hidden_field :payment_method,:value => @order.payment_method %>
+  <%= f.hidden_field :postal_code,:value => @order.postal_code %>
+  <%= f.hidden_field :address,:value => @order.address%>
+  <%= f.hidden_field :name,:value => @order.name %>
+  <%= f.hidden_field :postage,:value => @order.postage %>
+  <%= f.hidden_field :total_payment,:value => @total+@order.postage %>
+  <%=f.submit"注文を確定する" %>
+  <% end %>
+</div>
