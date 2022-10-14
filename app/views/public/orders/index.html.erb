@@ -1,3 +1,5 @@
 <%=render 'public/header' %>
-<h1>Public::Orders#index</h1>
-<p>Find me in app/views/public/orders/index.html.erb</p>
+<h2>注文履歴一覧</h2>
+<% @order.each do |order|%>
+<p>注文日:<%=order.created_at.strftime('%Y/%m/%d') %></p>
+<% end %>

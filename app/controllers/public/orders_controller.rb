@@ -35,6 +35,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+   @orders=current_customer
   end
 
   def show
