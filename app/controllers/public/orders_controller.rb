@@ -46,6 +46,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @cart_items=current_customer.cart_items
+    @order=Order.find(params[:id])
+    @total=0
+    @cart_items.each do |cart|
+    @total = @total + cart.sum_of_price
+    end
   end
 
 

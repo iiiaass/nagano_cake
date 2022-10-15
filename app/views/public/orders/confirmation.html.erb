@@ -7,7 +7,7 @@
   <p>数量:<%=cart_item.amount %></p>
   <p>小計:<%=cart_item.sum_of_price %></p>
   <% end %>
-  <p>合計金額：<%= @total.round.to_s(:delimited)%></p>
+  <p>商品合計：<%= @total.round.to_s(:delimited)%></p>
   <p>請求金額<%=@total+@order.postage%></p>
   <p>送料:<%=@order.postage %></p>
   <p>支払い方法</p>
