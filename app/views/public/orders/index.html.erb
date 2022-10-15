@@ -1,5 +1,17 @@
 <%=render 'public/header' %>
 <h2>注文履歴一覧</h2>
-<% @order.each do |order|%>
+<% @orders.each do |order|%>
 <p>注文日:<%=order.created_at.strftime('%Y/%m/%d') %></p>
+<p>配送先:<%=order.postal_code %>
+          <%=order.address %>
+          <%=order.name %></p>
+
+ <% @cart_items.each do |cart_item| %>
+ <p>注文商品:<%=cart_item.item.name %></p>
+ <% end %>
+ <p>支払い金額:<%=@total+@order.postage%></p>
+ <p>注文詳細</p>
+ <%=link_to "表示する",order_path(order.id) %>
 <% end %>
+
+<!--注文ごとの注文日が表示されていない-->

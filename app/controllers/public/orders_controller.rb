@@ -35,7 +35,14 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-   @orders=current_customer
+   @orders=current_customer.orders
+   @cart_items=current_customer.cart_items
+   @total=0
+   @cart_items.each do |cart|
+   @total = @total + cart.sum_of_price
+   end
+   @order = Order.new(order_params)
+   @order.postage=800
   end
 
   def show
@@ -44,7 +51,8 @@ class Public::OrdersController < ApplicationController
 
   private
   def order_params
-   params.require(:order).permit(:payment_method,:postal_code, :address, :name,:postage,:total_payment)
+   params.permit(:payment_method,:postal_code, :address, :name,:postage,:total_payment)
+   #require(:order).
   end
 
 end
