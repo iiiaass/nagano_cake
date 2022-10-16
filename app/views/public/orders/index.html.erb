@@ -6,12 +6,10 @@
           <%=order.address %>
           <%=order.name %></p>
 
- <% @cart_items.each do |cart_item| %>
- <p>注文商品:<%=cart_item.item.name %></p>
+ <% order.order_products.each do |order_product| %>
+ <p>注文商品:<%=order_product.item.name %></p>
  <% end %>
- <p>支払い金額:<%=@total+@order.postage%></p>
+ <p>支払い金額:<%=order.total_payment %></p>
  <p>注文詳細</p>
  <%=link_to "表示する",order_path(order.id) %>
 <% end %>
-
-<!--注文ごとの注文日が表示されていない-->

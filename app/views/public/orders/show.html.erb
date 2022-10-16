@@ -5,21 +5,20 @@
 <p>配送先:<%=@order.postal_code %>
           <%=@order.address %>
           <%=@order.name %></p>
-<p>支払い方法:<%=@order.payment_method %></p>
+<p>支払い方法:<%=@order.payment_method_i18n %></p>
 
 
 <h4>請求情報</h4>
-<p>商品合計:<%= @total.round.to_s(:delimited)%></p>
+<p>商品合計:<%= @order.total_payment-@order.postage%></p>
 <p>配送料:<%=@order.postage %></p>
-<p>ご請求額:<%=@total+@order.postage%></p>
+<p>ご請求額:<%=@order.total_payment %></p>
 
 <h4>注文内容</h4>
-<% @cart_items.each do |cart_item| %>
-  <p>商品名:<%=cart_item.item.name %></p>
-  <p>単価:<%=cart_item.item.add_tax_price.to_s(:dalimited) %></p>
-  <p>数量:<%=cart_item.amount %></p>
-  <p>小計:<%=cart_item.sum_of_price %></p>
+<% @order.order_products.each do |order_product| %>
+  <p>商品名:<%=order_product.item.name %></p>
+  <p>単価:<%=order_product.item.add_tax_price.to_s(:dalimited) %></p>
+  <p>数量:<%=order_product.amount %></p>
+  <p>小計:<%=order_product.item.add_tax_price*order_product.amount %></p>
 <% end %>
 
 
-<!--支払い方法が記載されていない-->

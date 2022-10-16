@@ -11,7 +11,7 @@
   <p>請求金額<%=@total+@order.postage%></p>
   <p>送料:<%=@order.postage %></p>
   <p>支払い方法</p>
-  <%=@order.payment_method %>
+  <%=@order.payment_method_i18n%>
   <p>お届け先</p>
   <%=@order.postal_code %>
   <%=@order.address %>
@@ -26,3 +26,4 @@
   <%=f.submit"注文を確定する" %>
   <% end %>
 </div>
+
