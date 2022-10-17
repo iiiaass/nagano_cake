@@ -1,3 +1,4 @@
+<%=render'admin/header'%>
 <h2>商品新規登録</h2>
 <%=form_with model: @item,url: admin_items_path do |f| %>
 <h4>商品画像</h4>
@@ -19,4 +20,3 @@
 <%=f.submit'新規登録' %>
 <% end %>
 
-se
