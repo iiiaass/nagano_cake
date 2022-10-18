@@ -7,6 +7,7 @@
   </tr>
 <h2>全<%=@items.count %>件</h2>
 <% @items.each do |item| %>
+<% if item.is_active == true%>
   <tr>
     <td>
       <%=link_to item_path(item.id) do %>
@@ -21,4 +22,6 @@
     <td>￥<%=item.add_tax_price.to_s(:dalimited) %></td>
   </tr>
 <% end %>
+<% end %>
+
 </table>

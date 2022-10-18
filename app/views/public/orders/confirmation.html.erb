@@ -1,4 +1,5 @@
 <%=render 'public/header' %>
+<h2>注文情報確認</h2>
 <div>
   <% @cart_items.each do |cart_item| %>
   <%=image_tag cart_item.item.get_image(100,100) %>

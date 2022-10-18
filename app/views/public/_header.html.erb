@@ -1,6 +1,6 @@
 <body>
   <header>
-      <h2>LOGO</h2>
+      <h2><%=link_to "LOGO",root_path %></h2>
        <% if customer_signed_in? %>
       <li>
         <%= link_to "マイページ", show_path %>

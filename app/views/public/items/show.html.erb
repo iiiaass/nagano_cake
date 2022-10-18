@@ -7,7 +7,9 @@
 <%=form_with model: @cart_item,url: cart_items_path do |f| %>
 <p><%=f.select:amount, *[1..10] %></p>
 <%= f.hidden_field :item_id, :value => @item.id %>
+<% if customer_signed_in? %>
 <%=f.submit'カートに入れる' %>
+<% end %>
 <% end %>
 
 

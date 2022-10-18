@@ -3,3 +3,14 @@
 このサイトは、ケーキ販売のECサイトになります。<br>
 会員でない方も商品の閲覧はできますが<br>
 購入にはには会員登録が必要になります。</p>
+
+<h2>新規商品</h2>
+<% @items.each do |item| %>
+<%=link_to item_path(item.id) do %>
+<%=image_tag item.get_image(100,100) %>
+<%end %>
+<%=item.name %>
+￥<%=item.add_tax_price %>
+<% end %>
+
+<%= link_to "全ての商品を見る",items_path %>
