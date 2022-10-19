@@ -5,7 +5,7 @@
 購入にはには会員登録が必要になります。</p>
 
 <h2>新規商品</h2>
-<% @items.each do |item| %>
+<% @page_items.each do |item| %>
 <%=link_to item_path(item.id) do %>
 <%=image_tag item.get_image(100,100) %>
 <%end %>
